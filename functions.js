@@ -1,8 +1,5 @@
 const customerModel = require ("./model/customer")
 
-// const handleGetRequest = async (req,res)=>{
-//     return res.status(200).json ({message:"successful"})
-// }
 
 const handleGetCustomerRequest = async(req,res)=>{
     const customer = await customerModel.find()
