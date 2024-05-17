@@ -1,6 +1,8 @@
 const express = require ("express")
 const dotenv = require ("dotenv")
 const mongoose = require ("mongoose")
+// const {handleGetRequest, handleGetCustomerRequest, handlePostRequest, handleEditCustomerRequest, 
+//     handleDeleteCustomerRequest} = require("./functions")
 
 dotenv.config()
 const app = express()
@@ -11,7 +13,7 @@ app.listen(PORT,()=>{
     console.log(`server is running ${PORT}`)
 })
 
-mongoose.connect(process.env.MongoDB_URL)
+mongoose.connect(process.env.MONGODB_URL)
 .then (()=>(
     console.log("MongoDB is connected")
 ))
@@ -19,9 +21,8 @@ mongoose.connect(process.env.MongoDB_URL)
     
 
     
-app.get ("/", handleGetRequest)
-app.get ("/customer", handleGetCustomerRequest)
-app.post ("/add-customer",  handlePostRequest)
-app.put ("/edit-customer/:id", handleEditCustomerRequest)
-app.delete ("/delete-cutomer/:id", handleDeleteCustomerResquest
-)
+
+// app.get ("/customer", handleGetCustomerRequest)
+// app.post ("/add-customer",  handlePostRequest)
+// app.put ("/edit-customer/:id", handleEditCustomerRequest)
+// app.delete ("/delete-cutomer/:id", handleDeleteCustomerRequest)

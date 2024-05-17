@@ -1,6 +1,6 @@
-const customer = require ("./model/customerModel")
+const customer = require ("./model/customer")
 
-const handleGetRequest = async(req,res)=>{
+const handleGetRequest = async (req,res)=>{
     return res.status(200).json ({message:"successful"})
 }
 
@@ -43,7 +43,7 @@ const handleEditCustomerRequest = async (req, res) => {
     })
 }
 
-const handleDeleteCustomerResquest = async(res,res)=>{
+const handleDeleteCustomerRequest = async(req, res)=>{
     const{id} = req.params
     const customer = await customer.findById(id)
     
@@ -60,5 +60,5 @@ module.exports = {
     handleGetCustomerRequest,
     handlePostRequest,
     handleEditCustomerRequest,
-    handleDeleteCustomerResquest
+    handleDeleteCustomerRequest
 }
