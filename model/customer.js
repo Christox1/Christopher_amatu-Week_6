@@ -4,10 +4,10 @@ const { Schema, model } = mongoose; // Correctly destructuring Schema and model 
 const customerSchema = new Schema({
     name: { type: String, required: true },
     email: { type: String, required: true, unique: true }, // Fixed unique constraint
-    phone: { type: String, required: true },
+    phoneNumber: { type: String, required: true },
     address: { type: String, required: true }
 });
 
-const Customer = model("Customer", customerSchema); // Correct usage of model without new
+const customerModel = model("Customer", customerSchema); // Correct usage of model without new
 
-module.exports = Customer; // Use PascalCase for the model name
+module.exports = customerModel; // Use PascalCase for the model name

@@ -1,11 +1,11 @@
-const customer = require ("./model/customer")
+const customerModel = require ("./model/customer")
 
-const handleGetRequest = async (req,res)=>{
-    return res.status(200).json ({message:"successful"})
-}
+// const handleGetRequest = async (req,res)=>{
+//     return res.status(200).json ({message:"successful"})
+// }
 
 const handleGetCustomerRequest = async(req,res)=>{
-    const customer = await customer.find()
+    const customer = await customerModel.find()
     return res.status(200).json({
         message: "successful",
         count: customer.length,
@@ -14,15 +14,13 @@ const handleGetCustomerRequest = async(req,res)=>{
 }
  
 const handlePostRequest = async (req, res)=>{
-    const { name, email, phone, address} = req.body
-    console.log({name, email, phone, address})
-    const newCustomer = new Customer ({name, email, phone, address})
-
+    const { name, email, phoneNumber, address} = req.body
+    const newCustomer = new customerModel({name, email, phoneNumber, address})
     console.log({newCustomer})
 
-    await newCustomer.save
+    await newCustomer.save()
 
-    return res.satus(200).jsaon({
+    return res.status(200).json({
         message: "successful",
         customer: newCustomer
     })
@@ -30,33 +28,30 @@ const handlePostRequest = async (req, res)=>{
 
 const handleEditCustomerRequest = async (req, res) => {
     const {id} = req.params
-    const {name, email, phone, address} = req.body
-    const editedBlog = await customer.findbyIdAndUpdate(
+    const {name, email, phoneNumber, address} = req.body
+    const updatedCustomer = await customerModel.findByIdAndUpdate(
         id,
-        {name,email,phone,address},
+        {name,email,phoneNumber,address},
         {new:true}
     )
 
     return res.status(200).json({
         message:"Successful",
-        customer: editedCustomer
+        updatedCustomer
     })
 }
 
 const handleDeleteCustomerRequest = async(req, res)=>{
-    const{id} = req.params
-    const customer = await customer.findById(id)
+    const {id} = req.params
+    const deletedCustomer = await customerModel.findByIdAndDelete(id)
     
-    return res.status.json({
+    return res.status(200).json({
       message: "Deleted successfully"
     })
 }
 
-
-
-
 module.exports = {
-    handleGetRequest,
+  
     handleGetCustomerRequest,
     handlePostRequest,
     handleEditCustomerRequest,

@@ -1,8 +1,8 @@
 const express = require ("express")
 const dotenv = require ("dotenv")
 const mongoose = require ("mongoose")
-// const {handleGetRequest, handleGetCustomerRequest, handlePostRequest, handleEditCustomerRequest, 
-//     handleDeleteCustomerRequest} = require("./functions")
+const {handleGetCustomerRequest, handlePostRequest, handleEditCustomerRequest, 
+    handleDeleteCustomerRequest} = require("./functions")
 
 dotenv.config()
 const app = express()
@@ -21,8 +21,7 @@ mongoose.connect(process.env.MONGODB_URL)
     
 
     
-
-// app.get ("/customer", handleGetCustomerRequest)
-// app.post ("/add-customer",  handlePostRequest)
-// app.put ("/edit-customer/:id", handleEditCustomerRequest)
-// app.delete ("/delete-cutomer/:id", handleDeleteCustomerRequest)
+app.get ("/customer", handleGetCustomerRequest)
+app.post ("/add-customer",  handlePostRequest)
+app.put ("/edit-customer/:id", handleEditCustomerRequest)
+app.delete ("/delete-cutomer/:id", handleDeleteCustomerRequest)
